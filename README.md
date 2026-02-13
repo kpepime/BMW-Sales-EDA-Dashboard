@@ -7,7 +7,7 @@ This project focuses on exploratory data analysis (EDA) and dashboard creation u
 Insights and recommendations are provided on the following key areas:
 
 - **Sales & Revenue Trends Over Years**: An analysis of how BMW's total sales/revenue changes over time (year by year), which helps determine overall growth or decline.
-- **Model & Fuel type performance**: An evaluation of how various BMW models contribute to total sales and revenue.
+- **Model & Fuel Type Performance**: An evaluation of how various BMW models contribute to total sales and revenue.
 - **Regional Performance**: A comparative analysis of BMW's performance in different regions. A review of which models perform best in which regions. These include regional preferences for specific models, as well as strategic product placement opportunities.
 
 Download the interactive Power BI dashboard [here](https://app.powerbi.com/view?r=eyJrIjoiYzU4NmIzNzktYmFiMC00NTQyLWFhNGEtZWI0YjY0MTE4NjBhIiwidCI6IjM1YmEzNjIzLWQzNDgtNDAxMi04OTkwLWMxNWI2YThlNGRkNCJ9).
