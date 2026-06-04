@@ -1,71 +1,139 @@
+# BMW Global Sales EDA & Dashboard (2010–2024)
+
+> **Tools:** PostgreSQL & Power BI  
+> **Dataset:** 50,000 rows. 11 columns. 7 regions. 15 years  
+> **Source:** [Kaggle: BMW Sales 2010–2024](https://www.kaggle.com/datasets/y0ussefkandil/bmw-sales2010-2024)
+
+---
+
+## Links
+
+| | |
+|---|---|
+| Live Dashboard | [View on Power BI](https://app.powerbi.com/view?r=eyJrIjoiYzU4NmIzNzktYmFiMC00NTQyLWFhNGEtZWI0YjY0MTE4NjBhIiwidCI6IjM1YmEzNjIzLWQzNDgtNDAxMi04OTkwLWMxNWI2YThlNGRkNCJ9) |
+| EDA Queries | [01_EDA_queries.sql](https://github.com/Khaythefirst/BMW-Sales-EDA-Dashboard/blob/main/SQL%20(BMW)%20files/01_EDA_queries.sql) |
+| Business Questions | [02_Business_questions_queries.sql](https://github.com/Khaythefirst/BMW-Sales-EDA-Dashboard/blob/main/SQL%20(BMW)%20files/02_Business_questions_queries.sql) |
+| Power BI File | [BMW GLOBAL SALES DASHBOARD.pbix](https://github.com/Khaythefirst/BMW-Sales-EDA-Dashboard/blob/main/BMW%20GLOBAL%20SALES%20DASHBOARD.pbix) |
+
+---
+
 ## Project Overview
-BMW (Bayerische Motoren Werke), also known as Bavarian Motor Works, is a German multinational luxury vehicle and motorcycle manufacturer headquartered in Munich. 
- 
-The company is well-known for its premium and luxury vehicles, as well as high-performance BMW M and BMW Motorrad motorcycles. 
-This project focuses on exploratory data analysis (EDA) and dashboard creation using BMW sales data obtained from Kaggle in order to uncover critical insights that will help BMW improve its sales performance.
 
-Insights and recommendations are provided on the following key areas:
+This project performs a full exploratory data analysis on BMW's global sales data from 2010 to 2024, with the goal of surfacing actionable insights for sales strategy, model prioritisation, and regional distribution.
 
-- **Sales & Revenue Trends Over Years**: An analysis of how BMW's total sales/revenue changes over time (year by year), which helps determine overall growth or decline.
-- **Model & Fuel Type Performance**: An evaluation of how various BMW models contribute to total sales and revenue.
-- **Regional Performance**: A comparative analysis of BMW's performance in different regions. A review of which models perform best in which regions. These include regional preferences for specific models, as well as strategic product placement opportunities.
+Three analytical dimensions are covered:
 
-Download the interactive Power BI dashboard [here](https://app.powerbi.com/view?r=eyJrIjoiYzU4NmIzNzktYmFiMC00NTQyLWFhNGEtZWI0YjY0MTE4NjBhIiwidCI6IjM1YmEzNjIzLWQzNDgtNDAxMi04OTkwLWMxNWI2YThlNGRkNCJ9).
+- **Sales & Revenue Trends**: year-over-year performance, cyclical patterns, peak and trough years
+- **Model & Fuel Type Performance**: which models and fuel types drive the most revenue and volume
+- **Regional Performance**: how BMW performs across 7 regions and which model–fuel combinations lead in each market
 
-The SQL queries used for the exploratory data analysis can be found [here](https://github.com/Khaythefirst/BMW-Sales-EDA-Dashboard/blob/main/SQL%20(BMW)%20files/01_EDA_queries.sql).
+All data exploration and transformation was performed in PostgreSQL. Findings are presented in an interactive 3-page Power BI dashboard.
 
-All SQL queries regarding various business questions are available [here](https://github.com/Khaythefirst/BMW-Sales-EDA-Dashboard/blob/main/SQL%20(BMW)%20files/02_Business_questions_queries.sql).
+---
+
+## Dashboard Preview
+
+![BMW Global Sales Dashboard](https://github.com/user-attachments/assets/4a19cda5-f6e0-4587-8048-c13bef3e1fc1)
+
+---
 
 ## Data Structure
-The BMW sales data consists of 11 columns: Model, Year, Region, Color, Fuel_type, Transmission, Engine_size_L, Mileage_KM, Price_USD, Sales_Volume, Sales_Classification with a total row count of 50,000 rows.
 
-Source: [Kaggle](https://www.kaggle.com/datasets/y0ussefkandil/bmw-sales2010-2024)
+| Column | Type | Description |
+|---|---|---|
+| `Model` | Text | BMW model name (e.g. 7 Series, X1, i8) |
+| `Year` | Integer | Sales year (2010–2024) |
+| `Region` | Text | Geographic sales region (7 regions) |
+| `Color` | Text | Vehicle colour |
+| `Fuel_type` | Text | Hybrid / Petrol / Diesel / Electric |
+| `Transmission` | Text | Manual / Automatic |
+| `Engine_size_L` | Numeric | Engine displacement in litres |
+| `Mileage_KM` | Numeric | Vehicle mileage in kilometres |
+| `Price_USD` | Numeric | Sale price in USD |
+| `Sales_Volume` | Integer | Units sold |
+| `Sales_Classification` | Text | Volume tier classification |
 
-_**P.S**: Upon cleaning the data, no duplicates were found and no null or blank values. Regardless, I still standardize all data._
+> No duplicates or null values were found in the raw dataset. All columns were standardised for consistency before analysis.
 
-## Executive Summary
-### Overview of Findings
+---
 
-With a notable peak in 2022, BMW's sales have grown significantly across seven regions between 2010 and 2024. Analysis by model and fuel type reveals that certain models consistently outsell others, with hybrid vehicles dominating most regions and petrol vehicles showing emerging growth trends. Though certain models can be held largely responsible for this increase, the following sections will address additional contributing factors and highlight important areas for improvement.
+## Key Findings
 
-Below is the overview page from the Power BI dashboard and more examples are included throughout the report. The entire interactive dashboard can be downloaded [here](https://app.powerbi.com/view?r=eyJrIjoiYzU4NmIzNzktYmFiMC00NTQyLWFhNGEtZWI0YjY0MTE4NjBhIiwidCI6IjM1YmEzNjIzLWQzNDgtNDAxMi04OTkwLWMxNWI2YThlNGRkNCJ9).
+### Sales & Revenue Trends
 
-<img width="1511" height="854" alt="Image" src="https://github.com/user-attachments/assets/4a19cda5-f6e0-4587-8048-c13bef3e1fc1" />
+BMW's sales followed a cyclical pattern across the 15-year period, with meaningful peaks and recoveries rather than steady linear growth.
 
+- **2022 was the peak year**, $1.34 trillion in revenue and 17.9 million units sold, the strongest performance in the dataset
+- **2023 was the weakest year**, $1.22 trillion in revenue and 16.2 million units, a sharp contraction following the 2022 high
+- **2020 also saw a significant drop**, consistent with the global disruption that year
+- **2024 showed strong recovery** after the 2023 trough, demonstrating recurring resilience
+- The YoY pattern suggests BMW's sales are sensitive to external macro conditions but consistently recover, no year represents a permanent decline
 
-### Sales & Revenue Trends:
+### Model & Fuel Type Performance
 
-- BMW’s performance between 2010 and 2024 shows clear highs and lows. In 2022, the company hit its peak, generating $1.34 trillion in revenue with 17.9 million units sold, marking the strongest year in the period under review.
-- However, there were setbacks along the way. Both 2020 and 2023 saw significant drops, with 2023 being the weakest year, recording just $1.22 trillion in revenue and 16.2 million sales.
-- Despite these downturns, the brand showed resilience. A slight recovery in 2021 paved the way for a peak 2022, and following a dramatic drop in 2023, sales and revenue rebounded strongly in 2024.
-- Overall, the year-over-year trends show a cyclical pattern of decline and recovery, but one that consistently demonstrates BMW's strong market presence and ability to rebound.
+| Metric | Leader | Value |
+|---|---|---|
+| Top model by revenue | 7 Series | $1.79 trillion |
+| Top model by units sold | 7 Series | 23.79 million units |
+| Years in top 5 | 7 Series | 11 of 15 years |
+| Top fuel type by revenue | Hybrid | $4.82 trillion |
+| Weakest model | M3 | Lowest in both sales and revenue |
 
-### Model & Fuel type performance:
+- The **7 Series** is BMW's single strongest performer across every dimension — revenue, volume, and consistency
+- Within the 7 Series, **hybrid variants lead** at 6.2 million units, followed by diesel (6.1M), petrol (5.8M), and electric (5.7M)
+- **Hybrid vehicles dominate across all fuel types**, generating more total revenue than petrol, diesel, or electric combined
+- The top 5 models, 7 Series, 3 Series, i8, X1, and 5 Series, account for a disproportionate share of total revenue
 
-- Across the years and regions, the 7 Series, 3 Series, i8, X1, and 5 Series consistently rank as BMW’s top-selling models.
-- With the 7 Series standing out by appearing in the top five for 11 different years. The 7 Series alone contributed an impressive $1.79 trillion in revenue and 23.79 million units sold, making it the brand’s strongest performer.
-- Notably, it sold the highest number of hybrid cars, totaling 6.2 million units, alongside 6.1 million diesel, 5.8 million petrol, and 5.7 million electric.
-- At the other end of the spectrum, the M3 model ranks as the weakest performer in both sales and revenue.
-- When comparing fuel types, hybrid vehicles lead the pack, generating $4.82 trillion in revenue, outperforming petrol, electric, and diesel categories. This reflects a clear consumer preference shift toward hybrid models within BMW’s lineup.
+### Regional Performance
 
-### Regional Performance:
+| Region | Revenue Share | Units Sold | Top Model | Top Fuel Type |
+|---|---|---|---|---|
+| Asia | 17.10% | 42.97M | X1 | Hybrid |
+| Europe | 16.77% | 42.56M | i8 | Hybrid |
+| North America | 16.74% | 42.40M | 7 Series | Electric |
+| Middle East | 16.66% | 42.33M | 7 Series | Petrol |
+| South America | 16.38% | 41.55M | X6 | Diesel |
+| Africa | 16.35% | 41.57M | 5 Series | Petrol |
 
-- BMW’s revenue distribution across regions is fairly balanced, though some stand out more than others. Asia leads the pack, contributing 17.1% of total revenue and achieving 42.97 million sales, with the X1 and hybrid models driving its success.
-- Europe follows closely with 16.77% of revenue and 42.56 million cars sold, where the i8 and hybrids dominate.
-- In North America, revenue share stands at 16.74% with 42.40 million sales, led by the 7 Series and electric vehicles.
-- The Middle East comes next at 16.66% of revenue and 42.33 million sales, where the 7 Series and petrol cars perform best.
-- South America accounts for 16.38% of revenue with 41.55 million sales, driven by the X6 and diesel models.
-- Finally, Africa rounds out the list at 16.35% of revenue and 41.57 million sales, with the 5 Series and petrol vehicles leading the way.
-- Overall, the data highlights Asia as the strongest region, while Africa and South America trail slightly behind, though each region shows distinct model and fuel type preferences that shape BMW’s global performance.
+- Revenue distribution is **remarkably balanced** across all six regions, the gap between highest (Asia, 17.1%) and lowest (Africa, 16.35%) is less than one percentage point
+- Despite similar revenue shares, **model and fuel type preferences diverge sharply by region**, reflecting differences in economic context, infrastructure, and consumer behaviour
+- Hybrid dominance is concentrated in **Asia, Europe, and North America**, higher-income markets with stronger EV infrastructure
+- **Petrol and diesel hold their ground** in the Middle East, Africa, and South America — markets where hybrid infrastructure is less developed
 
-### Recommendation:
+---
 
-Based on the uncovered insights, the following recommendations have been provided.
+## Recommendations
 
-- Regional performance reveals clear differences in customer preferences, which are closely related to each region's economic level.
-- Hybrid vehicles are dominant in Asia, Europe, North America, and the Middle East, accounting for a significant portion of revenue and sales, whereas their impact is less pronounced in South America and Africa.
-- This suggests that matching vehicle distribution to regional demand is critical to maintaining growth.
-- To increase sales, BMW should prioritize marketing more hybrid models to regions where it already leads, while also reinforcing other fuel types where it is dominant.
-- The data clearly shows that success is not just about the model, but also about matching the right fuel type to the right region, based on customer preferences and local economic realities.
+**1. Match fuel type distribution to regional economic context**
+Hybrid models lead in Asia, Europe, and North America. Pushing hybrids into South America and Africa before infrastructure supports them risks unsold inventory. BMW should scale hybrid marketing in regions where it already leads, and reinforce petrol and diesel positioning where those fuel types dominate.
 
+**2. Protect and extend the 7 Series franchise**
+With $1.79 trillion in lifetime revenue and consistent top-5 presence across 11 years, the 7 Series is BMW's most reliable revenue engine. Any decline in 7 Series performance should trigger immediate investigation, it is not replaceable in the short term.
 
+**3. Investigate the M3's underperformance**
+The M3 ranks last in both sales and revenue despite being a flagship performance model. This may reflect pricing, positioning, or distribution gaps. A targeted diagnostic by region and year could identify whether this is a global issue or concentrated in specific markets.
+
+**4. Use 2022 as the performance benchmark, not 2020 or 2023**
+Both 2020 and 2023 were outlier downturns. Planning against average performance across the full 15-year period — anchored to the 2022 peak as the realistic ceiling — gives a more defensible strategic baseline than using trough years.
+
+---
+
+## Repository Structure
+
+```
+BMW-Sales-EDA-Dashboard/
+├── SQL (BMW) files/
+│   ├── 01_EDA_queries.sql # Data exploration — structure, distributions, trends
+│   └── 02_Business_questions_queries.sql # Targeted business questions
+├── BMW GLOBAL SALES DASHBOARD.pbix # Power BI file (download to interact)
+├── Dashboard Image.png # Static dashboard preview
+└── README.md
+```
+
+---
+
+## Tools & Methods
+
+- **PostgreSQL**: data ingestion, standardisation, EDA queries, business question analysis
+- **Power BI**: 3-page interactive dashboard, DAX measures, slicers and cross-filtering
+- **SQL techniques used**: window functions (`RANK()`, `LAG()`, `OVER()`), CTEs, conditional aggregation, YoY change calculations, regional segmentation
