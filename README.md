@@ -11,9 +11,9 @@
 | | |
 |---|---|
 | Live Dashboard | [View on Power BI](https://app.powerbi.com/view?r=eyJrIjoiYzU4NmIzNzktYmFiMC00NTQyLWFhNGEtZWI0YjY0MTE4NjBhIiwidCI6IjM1YmEzNjIzLWQzNDgtNDAxMi04OTkwLWMxNWI2YThlNGRkNCJ9) |
-| EDA Queries | [01_EDA_queries.sql](https://github.com/Khaythefirst/BMW-Sales-EDA-Dashboard/blob/main/SQL%20(BMW)%20files/01_EDA_queries.sql) |
-| Business Questions | [02_Business_questions_queries.sql](https://github.com/Khaythefirst/BMW-Sales-EDA-Dashboard/blob/main/SQL%20(BMW)%20files/02_Business_questions_queries.sql) |
-| Power BI File | [BMW GLOBAL SALES DASHBOARD.pbix](https://github.com/Khaythefirst/BMW-Sales-EDA-Dashboard/blob/main/BMW%20GLOBAL%20SALES%20DASHBOARD.pbix) |
+| EDA Queries | [01_EDA_queries.sql](https://github.com/kpepime/BMW-Sales-EDA-Dashboard/blob/main/SQL%20(BMW)%20files/01_EDA_queries.sql) |
+| Business Questions | [02_Business_questions_queries.sql](https://github.com/kpepime/BMW-Sales-EDA-Dashboard/blob/main/SQL%20(BMW)%20files/02_Business_questions_queries.sql) |
+| Power BI File | [BMW GLOBAL SALES DASHBOARD.pbix](https://github.com/kpepime/BMW-Sales-EDA-Dashboard/blob/main/BMW%20GLOBAL%20SALES%20DASHBOARD.pbix) |
 
 ---
 
